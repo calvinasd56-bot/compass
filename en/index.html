@@ -104,6 +104,11 @@
   .drow { display:flex; align-items:center; gap:14px; padding:12px 0; border-top:1px solid #1b1b1b; }
   .drow:first-child { border-top:0; }
   .kv { display:flex; justify-content:space-between; align-items:baseline; gap:12px; }
+  @media (max-width:700px){
+    .demo-bar { gap:12px; }
+    .seg { margin-left:0; width:100%; }
+    .seg button { flex:1; text-align:center; }
+  }
   ::selection { background:rgba(99,102,241,.35); color:#fff; }
 </style>
 </head>
