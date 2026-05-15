@@ -72,9 +72,12 @@
   .btn-ghost:hover { background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.2); }
   .eyebrow { font-size:12px; font-weight:500; text-transform:uppercase; letter-spacing:.18em; color:#818cf8; }
   .link-hover { transition:color 180ms; } .link-hover:hover { color:#fff; }
-  .brand-mark { width:44px; height:44px; object-fit:contain; display:block; flex-shrink:0; }
-  .brand-wordmark { height:30px; width:auto; object-fit:contain; display:block; flex-shrink:0; filter:invert(1); }
-  @media (min-width:768px){ .brand-wordmark{ height:34px; } }
+  .brand-mark { width:32px; height:32px; object-fit:contain; display:block; flex-shrink:0; }
+  @media (min-width:768px){ .brand-mark { width:38px; height:38px; } }
+  @media (min-width:1024px){ .brand-mark { width:42px; height:42px; } }
+  .brand-wordmark { height:22px; width:auto; max-width:118px; object-fit:contain; display:block; flex-shrink:0; filter:invert(1); }
+  @media (min-width:768px){ .brand-wordmark{ height:26px; max-width:140px; } }
+  @media (min-width:1024px){ .brand-wordmark{ height:30px; max-width:160px; } }
   .hl-grad { background:linear-gradient(90deg,#fff 0%,#c7d2fe 55%,#6366f1 100%); -webkit-background-clip:text; background-clip:text; color:transparent; }
   .step { position:relative; padding:24px; border:1px solid #262626; border-radius:14px; background:#111; transition:border-color 240ms, transform 240ms, box-shadow 240ms; }
   .step:hover { border-color:rgba(99,102,241,.4); transform:translateY(-3px); box-shadow:0 24px 60px -30px rgba(99,102,241,.5); }
@@ -116,20 +119,20 @@
 
 <!-- NAV -->
 <header id="nav" class="fixed top-0 inset-x-0 z-40 transition-all duration-300">
-  <div class="max-w-6xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
-    <div class="flex items-center gap-2.5">
-      <a href="https://klaut.id" class="flex items-center gap-2.5" aria-label="Klaut — kembali ke klaut.id">
+  <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-10 h-16 flex items-center justify-between gap-3">
+    <div class="flex items-center gap-2.5 min-w-0">
+      <a href="https://klaut.id" class="flex items-center gap-2 sm:gap-2.5 min-w-0" aria-label="Klaut — kembali ke klaut.id">
         <img src="klaut-K.png" alt="" class="brand-mark"/>
         <img src="klaut-wordmark-text.png" alt="Klaut" class="brand-wordmark"/>
       </a>
-      <span class="text-dim text-sm font-medium hidden sm:inline leading-none select-none">/ Compass</span>
+      <span class="text-dim text-sm font-medium hidden lg:inline leading-none select-none whitespace-nowrap">/ Compass</span>
     </div>
-    <div class="flex items-center gap-3">
+    <div class="flex items-center gap-2 sm:gap-3 shrink-0">
       <div class="flex items-center rounded-full border border-white/10 bg-white/5 p-0.5 text-xs font-medium" role="group" aria-label="Bahasa">
-        <a href="/" class="px-3 py-1.5 rounded-full bg-white/10 text-white" aria-current="page">ID</a>
-        <a href="/en/" class="px-3 py-1.5 rounded-full text-muted hover:text-white transition-colors">EN</a>
+        <a href="/" class="px-2.5 sm:px-3 py-1.5 rounded-full bg-white/10 text-white" aria-current="page">ID</a>
+        <a href="/en/" class="px-2.5 sm:px-3 py-1.5 rounded-full text-muted hover:text-white transition-colors">EN</a>
       </div>
-      <a href="mailto:hello@klaut.id" class="btn btn-primary text-sm px-5 py-2.5">Book a call
+      <a href="mailto:hello@klaut.id" class="btn btn-primary text-sm px-3.5 py-2 sm:px-5 sm:py-2.5 whitespace-nowrap">Book a call
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </a>
     </div>
@@ -146,11 +149,11 @@
   <div class="relative max-w-5xl mx-auto px-6 lg:px-10 pt-24 pb-20 lg:pt-32 lg:pb-28">
     <div class="reveal eyebrow mb-5">Klaut Compass · AI Workforce Intelligence</div>
     <h1 class="reveal text-5xl md:text-7xl font-semibold tracking-tight leading-[0.98] max-w-4xl">
-      AI yang menajamkan tim Anda.<br/>
-      <span class="hl-grad">Bukan menggantikannya.</span>
+      AI HR Tools yang<br/>
+      <span class="hl-grad">memanusiakan manusia.</span>
     </h1>
     <p class="reveal mt-8 max-w-2xl text-lg md:text-xl text-muted leading-relaxed">
-      Compass hidup di dalam perusahaan Anda dan membuat setiap orang di tim measurably lebih tajam setiap bulan — dengan bukti.
+      Compass mempermudah proses bisnis Anda dengan meningkatkan human value karyawan yang bekerja di dalamnya.
     </p>
     <div class="reveal mt-10 flex flex-wrap gap-4">
       <a href="mailto:hello@klaut.id" class="btn btn-primary">Book a call
