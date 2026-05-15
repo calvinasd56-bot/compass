@@ -83,6 +83,14 @@
   .step:hover { border-color:rgba(99,102,241,.4); transform:translateY(-3px); box-shadow:0 24px 60px -30px rgba(99,102,241,.5); }
   .step-idx { font-family:'JetBrains Mono',monospace; font-size:12px; color:#818cf8; letter-spacing:.08em; }
   .pill { display:inline-flex; align-items:center; gap:8px; padding:6px 12px; border-radius:9999px; background:rgba(99,102,241,.10); border:1px solid rgba(99,102,241,.25); font-size:12px; color:#e4e4e7; }
+  .hero-shot { display:block; height:auto; border-radius:22px;
+    -webkit-mask-image:linear-gradient(95deg, transparent 0%, rgba(0,0,0,.4) 15%, #000 48%);
+            mask-image:linear-gradient(95deg, transparent 0%, rgba(0,0,0,.4) 15%, #000 48%);
+    filter:drop-shadow(0 26px 60px rgba(0,0,0,.5)); }
+  @media (max-width:1023px){
+    .hero-shot { -webkit-mask-image:linear-gradient(180deg, #000 58%, transparent 100%);
+                         mask-image:linear-gradient(180deg, #000 58%, transparent 100%); }
+  }
   .demo-frame { border:1px solid #262626; border-radius:16px; background:#0d0d0d; overflow:hidden; box-shadow:0 40px 120px -40px rgba(99,102,241,.3); }
   .demo-bar { display:flex; align-items:center; gap:14px; padding:12px 16px; border-bottom:1px solid #1f1f1f; background:#121212; flex-wrap:wrap; }
   .demo-dots { display:flex; gap:6px; }
@@ -147,21 +155,28 @@
   <div class="absolute inset-0 dot-grid"></div>
   <div class="orb orb-1"></div>
   <div class="orb orb-2"></div>
-  <div class="relative max-w-5xl mx-auto px-6 lg:px-10 pt-24 pb-20 lg:pt-32 lg:pb-28">
-    <div class="reveal eyebrow mb-5">Klaut Compass · AI Workforce Intelligence</div>
-    <h1 class="reveal text-5xl md:text-7xl font-semibold tracking-tight leading-[0.98] max-w-4xl">
-      AI HR tools that harmonize<br/>
-      <span class="hl-grad">Human &amp; AI relationships.</span>
-    </h1>
-    <p class="reveal mt-8 max-w-2xl text-lg md:text-xl text-muted leading-relaxed">
-      Compass empowers every person in your company with custom AI agents that work for you.
-    </p>
-    <div class="reveal mt-10 flex flex-wrap gap-4">
-      <a href="mailto:hello@klaut.id" class="btn btn-primary">Book a call
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-      </a>
-      <a href="https://compass-app.klaut.id/" target="_blank" rel="noopener" class="btn btn-ghost">Demo</a>
-      <a href="https://klaut.id/" class="btn btn-ghost">About Klaut</a>
+  <div class="relative max-w-6xl mx-auto px-6 lg:px-10 pt-24 pb-20 lg:pt-28 lg:pb-28">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-10 items-center">
+      <div>
+        <div class="reveal eyebrow mb-5">Klaut Compass · AI Workforce Intelligence</div>
+        <h1 class="reveal text-5xl md:text-6xl xl:text-7xl font-semibold tracking-tight leading-[1.02]">
+          AI HR tools that harmonize<br/>
+          <span class="hl-grad">Human &amp; AI relationships.</span>
+        </h1>
+        <p class="reveal mt-7 max-w-xl text-lg md:text-xl text-muted leading-relaxed">
+          Compass empowers every person in your company with custom AI agents that work for you.
+        </p>
+        <div class="reveal mt-9 flex flex-wrap gap-4">
+          <a href="mailto:hello@klaut.id" class="btn btn-primary">Book a call
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="https://compass-app.klaut.id/" target="_blank" rel="noopener" class="btn btn-ghost">Demo</a>
+          <a href="https://klaut.id/" class="btn btn-ghost">About Klaut</a>
+        </div>
+      </div>
+      <div class="reveal">
+        <img src="compass-hero.png" alt="" width="1024" height="1024" fetchpriority="high" decoding="async" class="hero-shot w-full max-w-[520px] mx-auto lg:mx-0 lg:ml-auto"/>
+      </div>
     </div>
   </div>
 </section>
