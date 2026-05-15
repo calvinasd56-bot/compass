@@ -80,6 +80,30 @@
   .step:hover { border-color:rgba(99,102,241,.4); transform:translateY(-3px); box-shadow:0 24px 60px -30px rgba(99,102,241,.5); }
   .step-idx { font-family:'JetBrains Mono',monospace; font-size:12px; color:#818cf8; letter-spacing:.08em; }
   .pill { display:inline-flex; align-items:center; gap:8px; padding:6px 12px; border-radius:9999px; background:rgba(99,102,241,.10); border:1px solid rgba(99,102,241,.25); font-size:12px; color:#e4e4e7; }
+  .demo-frame { border:1px solid #262626; border-radius:16px; background:#0d0d0d; overflow:hidden; box-shadow:0 40px 120px -40px rgba(99,102,241,.3); }
+  .demo-bar { display:flex; align-items:center; gap:14px; padding:12px 16px; border-bottom:1px solid #1f1f1f; background:#121212; flex-wrap:wrap; }
+  .demo-dots { display:flex; gap:6px; }
+  .demo-dots i { width:10px; height:10px; border-radius:9999px; background:#2e2e2e; display:block; }
+  .demo-title { font-family:'JetBrains Mono',monospace; font-size:12px; color:#a1a1aa; }
+  .seg { display:inline-flex; background:#161616; border:1px solid #262626; border-radius:9999px; padding:3px; gap:2px; margin-left:auto; }
+  .seg button { font:500 12px/1 'JetBrains Mono',monospace; color:#a1a1aa; padding:7px 12px; border-radius:9999px; border:0; background:transparent; cursor:pointer; transition:all .18s; }
+  .seg button.on { background:#6366f1; color:#fff; }
+  .tabs { display:flex; gap:4px; padding:12px 16px 0; border-bottom:1px solid #1f1f1f; flex-wrap:wrap; }
+  .tab { font-size:13px; font-weight:500; color:#a1a1aa; padding:9px 16px; border-radius:8px 8px 0 0; border:1px solid transparent; border-bottom:0; background:transparent; cursor:pointer; transition:all .18s; }
+  .tab:hover { color:#fff; }
+  .tab.on { color:#fff; background:#0d0d0d; border-color:#262626; }
+  .panel { padding:20px; display:none; }
+  .panel.on { display:block; }
+  .metric { border:1px solid #232323; border-radius:12px; background:#111; padding:16px; }
+  .metric .lbl { font-size:11px; color:#71717a; text-transform:uppercase; letter-spacing:.12em; }
+  .metric .val { font-size:26px; font-weight:600; margin-top:8px; font-variant-numeric:tabular-nums; letter-spacing:-.02em; }
+  .metric .dlt { font-size:12px; margin-top:6px; font-family:'JetBrains Mono',monospace; color:#71717a; }
+  .good { color:#34d399; }
+  .bar { height:7px; border-radius:9999px; background:#1f1f1f; overflow:hidden; }
+  .bar i { display:block; height:100%; border-radius:9999px; background:linear-gradient(90deg,#6366f1,#818cf8); transition:width .6s cubic-bezier(.2,.8,.2,1); }
+  .drow { display:flex; align-items:center; gap:14px; padding:12px 0; border-top:1px solid #1b1b1b; }
+  .drow:first-child { border-top:0; }
+  .kv { display:flex; justify-content:space-between; align-items:baseline; gap:12px; }
   ::selection { background:rgba(99,102,241,.35); color:#fff; }
 </style>
 </head>
@@ -88,11 +112,13 @@
 <!-- NAV -->
 <header id="nav" class="fixed top-0 inset-x-0 z-40 transition-all duration-300">
   <div class="max-w-6xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
-    <a href="/" class="flex items-center gap-2.5" aria-label="Klaut Compass">
-      <img src="klaut-K.png" alt="" class="brand-mark"/>
-      <img src="klaut-wordmark-text.png" alt="Klaut" class="brand-wordmark"/>
-      <span class="text-dim text-sm font-medium hidden sm:inline">/ Compass</span>
-    </a>
+    <div class="flex items-center gap-2.5">
+      <a href="https://klaut.id" class="flex items-center gap-2.5" aria-label="Klaut — kembali ke klaut.id">
+        <img src="klaut-K.png" alt="" class="brand-mark"/>
+        <img src="klaut-wordmark-text.png" alt="Klaut" class="brand-wordmark"/>
+      </a>
+      <span class="text-dim text-sm font-medium hidden sm:inline leading-none select-none">/ Compass</span>
+    </div>
     <div class="flex items-center gap-3">
       <div class="flex items-center rounded-full border border-white/10 bg-white/5 p-0.5 text-xs font-medium" role="group" aria-label="Bahasa">
         <a href="/" class="px-3 py-1.5 rounded-full bg-white/10 text-white" aria-current="page">ID</a>
@@ -170,6 +196,84 @@
   </div>
 </section>
 
+<!-- DEMO DASHBOARD -->
+<section id="demo" class="relative max-w-6xl mx-auto px-6 lg:px-10 py-20 lg:py-28 border-t border-white/5">
+  <div class="max-w-3xl reveal">
+    <div class="eyebrow mb-4">Demo</div>
+    <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leading-[1.1]">
+      Lihat Compass berjalan di <span class="hl-grad">satu tim CS</span>
+    </h2>
+    <p class="mt-5 text-base md:text-lg text-muted leading-relaxed">
+      Data yang sama, tiga sudut pandang, batas privasi yang ketat. Geser bulan untuk melihat tim menajam — dengan angka, bukan janji.
+    </p>
+  </div>
+
+  <div class="mt-12 reveal demo-frame" data-demo>
+    <div class="demo-bar">
+      <span class="demo-dots"><i></i><i></i><i></i></span>
+      <span class="demo-title">Compass · Customer Service — Tim Jakarta</span>
+      <span class="seg" role="group" aria-label="Bulan">
+        <button data-month="1" class="on">Bulan 1</button>
+        <button data-month="2">Bulan 2</button>
+        <button data-month="3">Bulan 3</button>
+      </span>
+    </div>
+
+    <div class="tabs" role="tablist">
+      <button class="tab on" data-tab="emp" role="tab">Karyawan · Dewi</button>
+      <button class="tab" data-tab="mgr" role="tab">Manajer</button>
+      <button class="tab" data-tab="hr" role="tab">HR</button>
+    </div>
+
+    <!-- EMPLOYEE -->
+    <div class="panel on" data-panel="emp">
+      <div class="grid md:grid-cols-2 gap-5">
+        <div class="metric">
+          <div class="lbl">Skor skill — Dewi</div>
+          <div class="val"><span data-k="skill">72</span><span class="text-dim text-lg font-normal"> / 100</span></div>
+          <div class="bar mt-4"><i data-k="skillbar" style="width:72%"></i></div>
+          <div class="dlt mt-3">Skill yang melekat ke Dewi, lintas peran.</div>
+        </div>
+        <div class="metric">
+          <div class="kv"><span class="lbl">Loop · langkah aktif</span></div>
+          <div class="drow"><div class="flex-1"><div class="text-sm text-muted">Gap terdeteksi <span class="text-dim">(Observe → Correct)</span></div><div class="text-sm font-medium mt-1">Kebijakan refund — kasus partial refund</div></div><div class="text-sm font-mono" data-k="gap">3 koreksi minggu ini</div></div>
+          <div class="drow"><div class="flex-1"><div class="text-sm text-muted">Micro-lesson <span class="text-dim">(Educate)</span></div><div class="text-sm font-medium mt-1">Refund: partial &amp; restocking fee · 4 menit</div></div><div class="text-sm font-mono" data-k="lesson">Ditugaskan</div></div>
+          <div class="drow"><div class="flex-1"><div class="text-sm text-muted">Hasil asesmen <span class="text-dim">(Assess)</span></div><div class="text-sm font-medium mt-1">Uji ulang 2 minggu kemudian</div></div><div class="text-sm font-mono" data-k="assess">Belum diuji</div></div>
+        </div>
+      </div>
+      <p class="tab-note mt-5 text-xs text-dim">Hanya Dewi dan atasan langsungnya yang melihat detail ini. HR tidak.</p>
+    </div>
+
+    <!-- MANAGER -->
+    <div class="panel" data-panel="mgr">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="metric"><div class="lbl">AHT</div><div class="val" data-k="aht">8m 12s</div><div class="dlt" data-k="ahtD">baseline</div></div>
+        <div class="metric"><div class="lbl">FCR</div><div class="val" data-k="fcr">68%</div><div class="dlt" data-k="fcrD">baseline</div></div>
+        <div class="metric"><div class="lbl">CSAT</div><div class="val" data-k="csat">4.1</div><div class="dlt" data-k="csatD">baseline</div></div>
+        <div class="metric"><div class="lbl">Eskalasi</div><div class="val" data-k="esc">12.4%</div><div class="dlt" data-k="escD">baseline</div></div>
+      </div>
+      <div class="metric mt-5">
+        <div class="kv mb-1"><span class="lbl">Sharpening tim — gap tertutup</span><span class="text-xs text-dim" data-k="agentsum">3 / 5 agent naik</span></div>
+        <div data-k="agents"></div>
+      </div>
+      <p class="tab-note mt-5 text-xs text-dim">Manajer melihat tim dan tren — bukan rekaman aktivitas tiap individu.</p>
+    </div>
+
+    <!-- HR -->
+    <div class="panel" data-panel="hr">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="metric"><div class="lbl">Tim yang membaik</div><div class="val" data-k="improving">3 / 5</div><div class="bar mt-3"><i data-k="improvingbar" style="width:60%"></i></div></div>
+        <div class="metric"><div class="lbl">Skill melekat ke karyawan</div><div class="val" data-k="skills">4</div><div class="dlt">tersertifikasi &amp; terbawa</div></div>
+        <div class="metric"><div class="lbl">Retensi skill · uji 30 hari</div><div class="val" data-k="retention">88%</div><div class="bar mt-3"><i data-k="retentionbar" style="width:88%"></i></div></div>
+        <div class="metric"><div class="lbl">PHK terkait Compass</div><div class="val">0</div><div class="dlt">Menumbuhkan, bukan menggantikan.</div></div>
+      </div>
+      <p class="tab-note mt-5 text-xs text-dim">HR melihat kepercayaan dan pertumbuhan tenaga kerja secara agregat — tanpa detail pengawasan individual.</p>
+    </div>
+  </div>
+
+  <p class="mt-5 text-xs text-dim reveal">Data ilustratif. Di implementasi nyata, Compass melaporkan angka langsung dari sistem kerja tim Anda.</p>
+</section>
+
 <!-- THREE BUYERS -->
 <section class="relative max-w-6xl mx-auto px-6 lg:px-10 py-20 lg:py-28 border-t border-white/5">
   <div class="max-w-3xl reveal">
@@ -228,9 +332,11 @@
 <footer class="border-t border-line">
   <div class="max-w-6xl mx-auto px-6 lg:px-10 py-12 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
     <div class="flex items-center gap-2.5">
-      <img src="klaut-K.png" alt="" class="brand-mark"/>
-      <img src="klaut-wordmark-text.png" alt="Klaut" class="brand-wordmark"/>
-      <span class="text-dim text-sm">/ Compass</span>
+      <a href="https://klaut.id" class="flex items-center gap-2.5" aria-label="Klaut — kembali ke klaut.id">
+        <img src="klaut-K.png" alt="" class="brand-mark"/>
+        <img src="klaut-wordmark-text.png" alt="Klaut" class="brand-wordmark"/>
+      </a>
+      <span class="text-dim text-sm leading-none select-none">/ Compass</span>
     </div>
     <div class="flex items-center gap-6 text-sm text-muted">
       <a href="https://klaut.id" class="link-hover">Klaut.id</a>
@@ -249,6 +355,58 @@
   window.addEventListener('scroll', onScroll, { passive:true }); onScroll();
   const obs = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); } }), { threshold:0.1, rootMargin:'0px 0px -10% 0px' });
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+
+<script>
+(function(){
+  const root = document.querySelector('[data-demo]');
+  if(!root) return;
+  const D = {
+    "1": { skill:72, gap:"3 koreksi minggu ini", lesson:"Ditugaskan", assess:"Belum diuji",
+      aht:"8m 12s", fcr:"68%", csat:"4.1", esc:"12.4%",
+      ahtD:"baseline", fcrD:"baseline", csatD:"baseline", escD:"baseline",
+      agents:[["Dewi",40],["Arif",35],["Sari",52],["Budi",30],["Tari",46]],
+      agentsum:"3 / 5 agent naik", improving:"3 / 5", improvingPct:60,
+      skills:"4", retention:"88%", retentionPct:88 },
+    "2": { skill:79, gap:"1 koreksi minggu ini", lesson:"Selesai", assess:"8 / 10",
+      aht:"7m 05s", fcr:"74%", csat:"4.4", esc:"9.1%",
+      ahtD:"−14% vs Bulan 1", fcrD:"+6 pt vs Bulan 1", csatD:"+0.3 vs Bulan 1", escD:"−3.3 pt vs Bulan 1",
+      agents:[["Dewi",68],["Arif",61],["Sari",73],["Budi",55],["Tari",70]],
+      agentsum:"4 / 5 agent naik", improving:"4 / 5", improvingPct:80,
+      skills:"9", retention:"91%", retentionPct:91 },
+    "3": { skill:86, gap:"0 — gap tertutup", lesson:"Selesai · diuji ulang", assess:"9 / 10",
+      aht:"6m 18s", fcr:"81%", csat:"4.6", esc:"6.8%",
+      ahtD:"−23% vs Bulan 1", fcrD:"+13 pt vs Bulan 1", csatD:"+0.5 vs Bulan 1", escD:"−5.6 pt vs Bulan 1",
+      agents:[["Dewi",92],["Arif",84],["Sari",95],["Budi",80],["Tari",88]],
+      agentsum:"5 / 5 agent naik", improving:"5 / 5", improvingPct:100,
+      skills:"14", retention:"94%", retentionPct:94 }
+  };
+  const set = (k,v) => root.querySelectorAll('[data-k="'+k+'"]').forEach(e => e.textContent = v);
+  function render(m){
+    const d = D[m];
+    ["gap","lesson","assess","aht","fcr","csat","esc","ahtD","fcrD","csatD","escD","agentsum","improving","skills","retention"].forEach(k => set(k,d[k]));
+    set("skill", d.skill);
+    root.querySelector('[data-k="skillbar"]').style.width = d.skill + "%";
+    root.querySelector('[data-k="improvingbar"]').style.width = d.improvingPct + "%";
+    root.querySelector('[data-k="retentionbar"]').style.width = d.retentionPct + "%";
+    root.querySelectorAll('[data-k$="D"]').forEach(e => e.classList.toggle('good', m !== "1"));
+    root.querySelector('[data-k="agents"]').innerHTML = d.agents.map(a =>
+      '<div class="drow"><span class="text-sm w-16 shrink-0">'+a[0]+'</span>'+
+      '<span class="bar flex-1"><i style="width:'+a[1]+'%"></i></span>'+
+      '<span class="text-xs font-mono text-dim w-10 text-right">'+a[1]+'%</span></div>').join("");
+  }
+  root.querySelectorAll('.seg button').forEach(b => b.addEventListener('click', () => {
+    root.querySelectorAll('.seg button').forEach(x => x.classList.remove('on'));
+    b.classList.add('on'); render(b.dataset.month);
+  }));
+  root.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => {
+    root.querySelectorAll('.tab').forEach(x => x.classList.remove('on'));
+    root.querySelectorAll('.panel').forEach(p => p.classList.remove('on'));
+    t.classList.add('on');
+    root.querySelector('[data-panel="'+t.dataset.tab+'"]').classList.add('on');
+  }));
+  render("1");
+})();
 </script>
 
 </body>
